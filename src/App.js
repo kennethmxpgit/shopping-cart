@@ -64,7 +64,11 @@ export default function App() {
     }
     setCart(tempArr);
     setCount(count+1);
-    console.log()
+
+    //add Animations
+    const toAnimate=document.querySelector('#cartArea i');
+    toAnimate.classList.add('animateThis');
+    setTimeout(()=>{toAnimate.classList.remove('animateThis');},300);
   }
 
 

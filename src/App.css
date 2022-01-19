@@ -185,3 +185,11 @@ body{
     background-color: black;
     color:white;
 }
+
+.animateThis{
+    font-size:500%;
+}
+
+#cartArea i{
+    transition:all 0.3s;
+}
