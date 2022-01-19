@@ -41,14 +41,13 @@ body{
 
 #homeText{
     box-sizing: border-box;
-    font-size:200%;
-    text-align:center;
-    padding:2%;
     height:100%;
-    width:100%;
     display:flex;
     align-items: center;
     justify-content: center;
+    padding:0 5% 0 5%;
+    text-align:center;
+    font-size:150%;
 }
 
 .navText{
@@ -71,10 +70,34 @@ body{
     box-sizing: border-box;
 }
 #itemsPage{
+    box-sizing: border-box;
     height:90%;
-    width:100%;
-    overflow:auto;
+    width:100vw;
 }
+
+#cartPage{
+    box-sizing: border-box;
+    height:100%;
+    width:100vw;
+}
+
+#itemsPage .itemsContainer{
+    height:100%;
+    display:flex;
+    flex-wrap:wrap;
+    overflow:auto;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#cartPage .itemsContainer{
+    display:flex;
+    height:100%;
+    flex-direction:column;
+    overflow:auto;  
+}
+
 #cartArea{
     box-sizing: border-box;
     height:10%;
@@ -84,4 +107,81 @@ body{
     align-items:center;
     justify-content: right;
     padding-right:2%;
+}
+
+.item{
+    box-sizing: border-box;
+    height:40%;
+    display:flex;
+    justify-content: center;
+}
+
+.itemLeft{
+    box-sizing: border-box;
+    width:10rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.itemLeft img{
+    box-sizing: border-box;
+    width:100%;
+}
+
+#cartPage .itemRight{
+    width:15rem;
+}
+
+.itemRight{
+    box-sizing: border-box;
+    padding:2%;
+    width:10rem;
+    text-align:left;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    gap:10%;
+}
+
+.itemName{
+    height:30%;
+    font-size:3vh;
+}
+.itemPrice{
+    font-size:5vh;
+    
+}
+.addCartBtn{
+    width:100px;
+    background-color: white;
+    height:5vh;
+    font-family:inherit;
+    border-style:solid;
+}
+.addCartBtn:hover{
+    color:white;
+    background-color: black;
+}
+
+#itemCount{
+    font-size:130%;
+}
+
+.buttonContainer{
+    display:flex;
+}
+
+.buttonContainer button{
+    font-size:2rem;
+    height:3rem;
+    width:3rem;
+    background-color: white;
+    border-style: none;
+}
+
+.buttonContainer button:hover{
+    background-color: black;
+    color:white;
 }

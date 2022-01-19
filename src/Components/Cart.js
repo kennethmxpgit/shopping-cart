@@ -1,9 +1,4 @@
-import { useEffect } from "react/cjs/react.development";
-import {Router,Routes,Route,Link} from 'react-router-dom';
-
-
-export default function Store(props){
-    
+export default function Cart(props){
     const catalog=[
         {price:'20',name:'T-shirt Urban Black'},
         {price:'20',name:'T-shirt Urban Red'},
@@ -16,11 +11,13 @@ export default function Store(props){
         {price:'10',name:'Shorts - Gray'},
         {price:'50',name:'Trousers - Black'},
       ]
-
-      function addToCart(item){
-          props.addItem(item);
-      }
-      function Item(props){
+    function plusFunc(item){
+        props.addItem(item);
+    }
+    function minFunc(item){
+        props.removeItem(item);
+    }
+    function Item(props){
         return(
             <div class='item'>
                 <div class='itemLeft'>
@@ -34,36 +31,41 @@ export default function Store(props){
                         <span class='itemPrice'>{catalog[props.iid].price}</span>
                         
                     </div>
-                    <button class='addCartBtn' onClick={()=>addToCart(props.iid)}>Add to Cart</button>
+                    <div>qty : {props.qty}</div>
+                    
+
+                    <div class='buttonContainer'>
+                        <button onClick={()=>minFunc(props.iid)}>-</button>
+                        <button onClick={()=>plusFunc(props.iid)}>+</button>
+                    </div>
+
                 </div>
             </div>
         )
     }
-    const linkStyle=''
+
+    function itemsFromCart(){
+        if(props.cart[0]==undefined){
+            return <div class='itemsContainer centerMe'>Shopping Cart is Empty</div>
+        } else{
+            return <div class='itemsContainer'>
+            {props.cart.map((el)=>
+                <Item iid={el.iid} qty={el.qty}/>
+            )}
+
+        </div>
+
+        }
+
+    }
+
     return(
         <div class='mainScreen'>
-            <div id='itemsPage'>
-                <div class='itemsContainer'>
-                    <Item iid='0'/>
-                    <Item iid='1'/>
-                    <Item iid='2'/>
-                    <Item iid='3'/>
-                    <Item iid='4'/>
-                    <Item iid='5'/>
-                    <Item iid='6'/>
-                    <Item iid='7'/>
-                    <Item iid='8'/>
-                    <Item iid='9'/>
-                </div>
+            <div id='cartPage'>
+                {itemsFromCart()}
             </div>
-            <Link to='/cart' style={{ textDecoration: 'none' ,color:'inherit'}}>
-                <div id='cartArea'>
-                    <div id='itemCount'>{props.count}</div>
-                    <i class="fas fa-shopping-cart fa-2x"></i>
+                <div>
                 </div>
-                
-            </Link>
-
         </div>
     )
 }
